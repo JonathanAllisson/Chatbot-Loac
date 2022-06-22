@@ -1,0 +1,28 @@
+{
+  "name": "react-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "backend": "nodemon src/index.js",
+    "frontend": "npm run front --prefix client",
+    "dev": "concurently \"npm run backend\" \"npm run frontend\""
+  },
+  "author": "Jonathan",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dialogflow": "^1.2.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "structjson": "^1.0.1",
+    "universal-cookie": "^4.0.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
