@@ -4,6 +4,7 @@
     width: 100%;
     border-radius: 4px;
     /* background: linear-gradient(to bottom right, #7887E6, #ADDFF8); */
+    /* background-color: #addff838; */
     overflow-y: scroll;
     border: 1px solid #222;
 }
@@ -32,25 +33,26 @@
     /* width: 100%; */
     display: flex;
     
-}
+}   
 
-.msg .msg-text {
+.msg span {
     position: relative;
     right: 0;
     max-width: 60%;
     padding: 12px;
-    background: #FFF;
+    /* background: #FFF; */
+    background-color: #ADDFF8;
     border-radius: 10px;
 }
 
-.msg.bot .msg-text::before{
+.msg.bot span::before{
     content: '';
     position: absolute;
     top: 0;
     left: -12px;
     width: 20px;
     height: 20px;
-    background: linear-gradient(225deg, #fff 0%, #fff 50%, transparent 50%, transparent);
+    background: linear-gradient(225deg, #ADDFF8 0%, #ADDFF8 50%, transparent 50%, transparent);
 }
 
 .human{
