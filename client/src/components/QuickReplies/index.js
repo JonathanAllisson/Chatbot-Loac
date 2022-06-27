@@ -2,6 +2,7 @@ import './styles.css';
 
 export function QuickReplies({qr, handleSubmit}){
     
+    console.log(JSON.stringify(qr.quick_replies))
     return (
         <>
             {qr.text && 
@@ -9,8 +10,12 @@ export function QuickReplies({qr, handleSubmit}){
                     <span>{qr.text.stringValue}</span>
                 </div>
             }
-            <div className="msg" onClick={(e) => handleSubmit()}>
-                <span id="qr">teste</span>
+            <div className="qr-msg">
+                {qr.quick_replies.listValue.values.map(qr_msg => (
+                    <div onClick={(e) => handleSubmit(e, qr_msg.structValue.fields.payload.stringValue, qr_msg.structValue.fields.payload.stringValue)}>
+                        <span id="qr">{qr_msg.structValue.fields.text.stringValue}</span>
+                    </div> 
+                ))}
             </div>
         </>
     )

@@ -7,8 +7,9 @@
   "scripts": {
     "start": "node src/index.js",
     "backend": "nodemon src/index.js",
-    "frontend": "npm run front --prefix client",
-    "dev": "concurently \"npm run backend\" \"npm run frontend\""
+    "frontend": "npm start --prefix client",
+    "dev": "concurently \"npm run backend\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "Jonathan",
   "license": "ISC",
