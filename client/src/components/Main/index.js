@@ -17,6 +17,7 @@ export function Main(){
     const msgRef = useRef();
 
     const cookies = new Cookies();
+    const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
     useEffect(() => {
        df_event_query('Welcome');
@@ -34,7 +35,7 @@ export function Main(){
     }, [messages]);
 
     async function df_text_query(text, saysHuman){
-        const res = await axios.post('http://localhost:5000/api/df_text_query', {text, userID: cookies.get('userID')});
+        const res = await axios.post(`${BASE_URL}/api/df_text_query`, {text, userID: cookies.get('userID')});
         
         let messagesList = [];
         for(let msg of res.data.fulfillmentMessages){
@@ -51,7 +52,7 @@ export function Main(){
 
     async function df_event_query(event){
         //let headers = {'Access-Control-Allow-Origin': '*'}
-        const res = await axios.post('http://localhost:5000/api/df_event_query', {event, userID: cookies.get('userID')});
+        const res = await axios.post(`${BASE_URL}/api/df_event_query`, {event, userID: cookies.get('userID')});
         console.log(res.data);
         let messagesList = [];
         for (let msg of res.data.fulfillmentMessages){
