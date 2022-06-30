@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: white;
+    background-color: #ADDFF8;
     padding: 8px;
     width: 86px;
     border-radius: 10px;
@@ -49,5 +49,5 @@
     left: -12px;
     width: 20px;
     height: 20px;
-    background: linear-gradient(225deg, #fff 0%, #fff 50%, transparent 50%, transparent);
+    background: linear-gradient(225deg, #ADDFF8 0%, #ADDFF8 50%, transparent 50%, transparent);
 }

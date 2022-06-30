@@ -101,8 +101,20 @@ export function Main(){
             case 'postback_menu':
                 df_event_query('MENU');
                 break;
+            case 'postback_mn_pt1':
+                df_event_query('MINICURSO');
+                break;
             default:
-                df_text_query(text)
+                let says = {
+                    speaks: 'human',
+                    msg: {
+                        text : {
+                            text
+                        }
+                    }
+                };
+                setMessages([...messages, says]);
+                df_text_query(text, says)
                 break;
         }
     }
