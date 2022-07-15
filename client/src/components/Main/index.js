@@ -4,7 +4,8 @@ import Cookies from 'universal-cookie';
 import {v4 as uuid } from 'uuid';
 import { Message } from '../Message';
 import { ListCards } from '../ListCards';
-import {ReactComponent as Submit} from '../../assets/Send.svg';
+import {ReactComponent as Submit} from '../../assets/Send2.svg';
+import {ReactComponent as Logo} from '../../assets/logo.svg';
 
 import './styles.css';
 import { Typing } from '../Typing';
@@ -121,6 +122,7 @@ export function Main(){
     
     return(
         <>
+            <Logo className="logo" />
             <div className="container" ref={msgRef}>
                 <ul className="box">
                     {messages.map((message, i) => {
