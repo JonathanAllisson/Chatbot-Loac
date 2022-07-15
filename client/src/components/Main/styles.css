@@ -1,5 +1,5 @@
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     height: 80vh;
     width: 100%;
     border-radius: 4px;
@@ -70,7 +70,7 @@
 }
 
 .wrapper {
-    max-width: 900px;
+    max-width: 1200px;
     width: 100%;
     margin-top: 5px;
     display: flex;
@@ -82,7 +82,7 @@
     padding: 0 10px 0 25px;
     border-radius: 7px;
     border: 1px solid #7386FF;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .wrapper button {
@@ -96,7 +96,7 @@
     justify-content: center;
     background: #FFF;
     border: 1px solid #7386FF;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 .wrapper button:hover {
@@ -104,6 +104,12 @@
 }
 
 .logo {
-    margin-top: -10px;
-    padding-bottom: 5px;
+    margin-top: -20px;
+    padding-bottom: 10px;
+}
+
+@media (max-width: 1400px){
+    .container, .wrapper {
+        max-width: 900px;
+    }
 }
