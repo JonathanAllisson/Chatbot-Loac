@@ -1,8 +1,7 @@
 import './styles.css';
 
-export function Card({item}){
+export function Card({item, handleSubmit}){
 
-    // console.log(props)
     return (
         <div className="card">
             <img src={item.fields.image.stringValue} alt={item.fields.image.stringValue} />
@@ -10,7 +9,12 @@ export function Card({item}){
                 <h3 className="card-title">{item.fields.header.stringValue}</h3>
                 <p className="card-p">{item.fields.description.stringValue}</p>
             </div>
-            <a href={item.fields.link.stringValue} target="_blank" className="card-btn" rel="noreferrer">Visitar <span>&rarr;</span></a>
+            {
+                item.fields.button.structValue.fields.link.boolValue ?
+                <a href={item.fields.button.stringValue} target="_blank" className="card-btn" rel="noreferrer">Visitar <span>&rarr;</span></a>
+                :
+                <button onClick={(e) => handleSubmit(e, "", item.fields.button.structValue.fields.payload.stringValue)} className="card-btn">Ir <span>&rarr;</span></button>
+            }
         </div>
     )
 }

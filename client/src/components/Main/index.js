@@ -139,7 +139,7 @@ export function Main(){
                         else {
                             // console.log(message.msg.payload.fields.cards.listValue.values[0].structValue)
                             // return <Card key={i} payload={message.msg.payload.fields.cards.listValue.values[0].structValue}/>
-                            return <ListCards propsCards = {message.msg.payload.fields.cards.listValue.values}/>
+                            return <ListCards propsCards = {message.msg.payload.fields.cards.listValue.values} handleSubmit={handleQuickReplyPayload}/>
                         }
                     })}
                 </ul>
