@@ -2,7 +2,7 @@ import './styles.css';
 
 export function QuickReplies({qr, handleSubmit}){
     
-    console.log("qr print " + JSON.stringify(qr))
+    // console.log("qr print " + JSON.stringify(qr))
     return (
         <>
             {qr.text && 

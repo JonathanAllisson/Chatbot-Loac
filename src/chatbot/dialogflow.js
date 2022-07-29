@@ -1,6 +1,8 @@
 import dialogflow from 'dialogflow';
 import structjson from 'structjson';
 import * as uuid from 'uuid';
+import { run } from '../utils/email.js';
+import { queryVideos } from '../utils/youtube.js';
 
 
 export function configPrivateKey(key) {
@@ -67,9 +69,19 @@ const eventQuery = async function(event, userID, parameters = {}){
     return responses;
 }
 
-const handleAction = function(responses){
+const handleAction = async function(responses){
+    let queryResult = responses[0].queryResult;
+    switch(queryResult.action){
+        case 'email_pd':
+            console.log('log action: ' + JSON.stringify(queryResult.parameters.fields.content_msg))
+            await run('USUARIO', queryResult.parameters.fields.content_msg.stringValue)
+            break;
+        case 'yt':
+            const data = await queryVideos(queryResult.parameters.fields.q_youtube.stringValue);
+            responses[0].queryResult.fulfillmentMessages[0].payload.fields.cards.listValue.values = data;
+            break
+    }
     return responses;
-// }
 }
 
 export {textQuery, eventQuery}

@@ -11,7 +11,7 @@ export function Card({item, handleSubmit}){
             </div>
             {
                 item.fields.button.structValue.fields.link.boolValue ?
-                <a href={item.fields.button.stringValue} target="_blank" className="card-btn" rel="noreferrer">Visitar <span>&rarr;</span></a>
+                <a href={item.fields.button.structValue.fields.payload.stringValue} target="_blank" className="card-btn" rel="noreferrer">Visitar <span>&rarr;</span></a>
                 :
                 <button onClick={(e) => handleSubmit(e, "", item.fields.button.structValue.fields.payload.stringValue)} className="card-btn">Ir <span>&rarr;</span></button>
             }

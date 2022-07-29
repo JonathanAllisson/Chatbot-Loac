@@ -10,6 +10,7 @@ import {ReactComponent as Logo} from '../../assets/logo.svg';
 import './styles.css';
 import { Typing } from '../Typing';
 import { QuickReplies } from '../QuickReplies';
+import { ChatImage } from '../ChatImage';
 
 export function Main(){
 
@@ -135,6 +136,9 @@ export function Main(){
                         }
                         else if(message.msg && message.msg.payload && message.msg.payload.fields.quick_replies){
                             return <QuickReplies qr={message.msg.payload.fields} handleSubmit={handleQuickReplyPayload} />
+                        }
+                        else if(message.msg && message.msg.payload && message.msg.payload.fields.img){
+                            return <ChatImage url={message.msg.payload.fields} />
                         }
                         else {
                             // console.log(message.msg.payload.fields.cards.listValue.values[0].structValue)
