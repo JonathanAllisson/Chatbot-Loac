@@ -74,7 +74,7 @@ const handleAction = async function(responses){
     switch(queryResult.action){
         case 'email_pd':
             console.log('log action: ' + JSON.stringify(queryResult.parameters.fields.content_msg))
-            await run('USUARIO', queryResult.parameters.fields.content_msg.stringValue)
+            await run(queryResult.parameters.fields.content_msg.stringValue, 'USUARIO')
             break;
         case 'yt':
             const data = await queryVideos(queryResult.parameters.fields.q_youtube.stringValue);
