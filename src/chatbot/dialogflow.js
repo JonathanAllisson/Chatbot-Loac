@@ -1,7 +1,7 @@
 import dialogflow from 'dialogflow';
 import structjson from 'structjson';
 import * as uuid from 'uuid';
-import { run } from '../utils/email.js';
+import { run, saveTitleEmail } from '../utils/email.js';
 import { queryVideos } from '../utils/youtube.js';
 
 
@@ -46,7 +46,7 @@ const textQuery = async function(text, userID, parameters = {}){
     };
      
     let responses = await sessionClient.detectIntent(request);
-    responses = await handleAction(responses);
+    responses = await handleAction(responses, sessionPath);
     return responses;
 }
 
@@ -65,16 +65,18 @@ const eventQuery = async function(event, userID, parameters = {}){
     };
      
     let responses = await sessionClient.detectIntent(request);
-    responses = await handleAction(responses);
+    responses = await handleAction(responses, sessionPath);
     return responses;
 }
 
-const handleAction = async function(responses){
+const handleAction = async function(responses, sessionPath){
     let queryResult = responses[0].queryResult;
     switch(queryResult.action){
+        case 'emailTitle':
+            await saveTitleEmail(queryResult.parameters.fields.email_title.stringValue, sessionPath);
+            break;
         case 'email_pd':
-            console.log('log action: ' + JSON.stringify(queryResult.parameters.fields.content_msg))
-            await run(queryResult.parameters.fields.content_msg.stringValue, 'USUARIO')
+            await run(queryResult.parameters.fields.content_msg.stringValue, sessionPath)
             break;
         case 'yt':
             const data = await queryVideos(queryResult.parameters.fields.q_youtube.stringValue);

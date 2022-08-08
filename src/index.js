@@ -2,6 +2,7 @@ import express from 'express';
 import 'dotenv/config';
 import cors from 'cors';
 import path from 'path';
+import mongoose from 'mongoose';
 import { router } from './routes.js';
 
 const app = express();
@@ -13,6 +14,11 @@ app.get('/hello', (req, res) =>{
 })
 
 app.use(router);
+
+mongoose.connect(process.env.MONGODB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
 
 if (process.env.NODE_ENV === 'production') {
     // js and css files
